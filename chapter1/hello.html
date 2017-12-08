@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app='cxm'>
+<head>
+	<title></title>
+</head>
+<body>
+	<div ng-controller='HelloController'>
+		<!--ng-model实现双向数据绑定 -->
+		<input type="" name="" ng-model='greeting.text'>
+		<!--使用双大括号对于index.html页面加载时未被渲染，从而可能会被用户看到代码，使用 ng-bind会避免这个问题  -->
+		<p>{{greeting.text}} angular!</p>
+
+		<p ng-bind="greeting.text"></p>
+	</div>
+
+	<script src="../node_modules/angular/angular.js"></script>
+	<script src="controller.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="application">
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+
+	<div ng-controller="StartUpController">
+		<!--ng-change指定一个控制器方法，一旦用户修改了输入的值，这个方法会调用-->
+		Starting: <input ng-change="computeNeeded()" ng-model="funding.startingEstimate">
+		<br/>
+		Recommendation: {{funding.needed}}
+	</div>
+
+	<br/>
+	<!--注意比较和上面的不同。此处controller中使用watch方法 -->
+	<div ng-controller="StartUpControllerWatch">
+		StartingWatch: <input ng-model="funding.startingEstimate">
+		<br/>
+		RecommendationWatch: {{funding.needed}}
+	</div>
+
+	<br/>
+	<!--使用Button实现计算 -->
+	<div ng-controller="StartUpControllerButton">
+		StartingButton: <input ng-model="funding.startingEstimate">
+		<br/>
+		RecommendationButton: {{funding.needed}}
+		<br/>
+		<button ng-click="computeNeeded()">计算</button>
+	</div>
+
+
+	<br/>
+	<div ng-controller="StudentListController" >
+		<div ng-show="menuState">	
+			<ul>
+				<li ng-repeat="student in students">
+					{{student.name}}
+				</li>
+			</ul>
+			<button ng-click="insert()">add student</button>
+		</div>
+		<button ng-click="changeState()">显示与隐藏</button>
+	</div>
+
+
+	<!--ng-class指令 -->
+	<div ng-controller='HeaderController'>
+      <div ng-class='{error: isError, warning: isWarning}'>
+      		{{messageText}}</div>
+      <button ng-click='showError()'>Simulate Error</button>
+      <button ng-click='showWarning()'>Simulate Warning</button>
+    </div>
+
+    <div ng-controller='ShoppingController'>
+	    <h1>Shop!</h1>
+	    <table>
+	      <tr ng-repeat="item in items">
+	        <td>{{item.title}}</td>
+	        <td>{{item.description}}</td>
+	        <td>{{item.price | currency}}</td>
+	      </tr>
+	    </table>
+	</div>
+
+	<script src="../node_modules/angular/angular.js"></script>
+	<script src="../node_modules/angular/angular.min.js"></script>
+	<script src="controller.js"></script>
+</body>
+</html>
