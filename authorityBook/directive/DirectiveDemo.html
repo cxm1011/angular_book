@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="directiveDemo">
+<head>
+	<title></title>
+
+</head>
+<body>
+	<!-- 注意指令之间得用-连接 -->
+	<div goto-google></div>
+
+	<!-- 指令传值 -->
+	<div goto-google2 obtain-attr="binding@"></div>
+
+	<!-- 指令传值应用-->
+	<div goto-google3 my-url2="https://www.google.com.hk/" click-me='click me'></div>
+
+	<!-- 指令传值应用2 -->	
+	
+	<div goto-google4 input-text="{{inputText}}"></div>
+
+	<script src="../../node_modules/angular/angular.min.js"></script>
+	<script src="DirectiveDemo.js"></script>
+</body>
+</html>
