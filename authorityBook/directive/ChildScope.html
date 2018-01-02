@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="ChildScopeDemo">
+<head>
+	<title></title>
+</head>
+<body>
+	<!-- 说明对someBareValue值，子控制器是复制而非引用-->
+	<div>对于字符串、数字和布尔型变量，子控制器是复制而非引用</div>
+	<div ng-controller="ParentController">
+		{{someBareValue}}
+		<!--点击父控制器的按钮。子对象中的值会修改 -->
+		<button ng-click="parentAction()">click parent</button> 
+		<div ng-controller="ChildController">
+			{{someBareValue}}
+			<!--点击子控制器的按钮。父对象中的值不会修改 -->
+			<button ng-click="childAction()">click child</button>
+		</div>
+	</div>
+
+	<br>
+	<div>而对于对象，数组和函数，子控制器是引用而非复制</div>
+	<div ng-controller="ParentController2">
+		{{parentModel.value}}
+		<!--点击父控制器的按钮。子对象中的值会修改 -->
+		<button ng-click="parentAction()">click parent</button> 
+		<div ng-controller="ChildController2">
+			{{parentModel.value}}
+			<!--点击子控制器的按钮。父对象中的值不会修改 -->
+			<button ng-click="childAction()">click child</button>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.js"></script>
+	<script src="../../node_modules/angular/angular.js"></script>
+	<script src="../../node_modules/angular/angular.min.js"></script>
+	<script src="ChildScope.js"></script>
+</body>
+</html>

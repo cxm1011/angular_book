@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app = 'innerDirectiveDemo'>
+<head>
+	<title></title>
+
+</head>
+<body>
+	<input type="text" ng-model="inputText"/>
+	<!-- ng-disabled指令用于判断按钮是否禁用-->
+	<button ng-disabled="!inputText">click</button>
+	<br>
+	
+	<!--ng-init 指令进行初始化  ng-check进行检查是否为true -->
+	<input type="checkbox" ng-checked="property" ng-init="property=false">
+
+	<br>
+	<input type="text" ng-model='isTwoFish'>
+	<select>
+		<option>one fish</option>
+		<option ng-selected='isTwoFish'>two fish</option>
+	</select>
+
+	<a ng-href={{myHref}}>www.daidu.com</a>
+	<a href={{myHref}}>www.daidu.com</a>
+
+	<div ng-controller="parentController">
+		{{value}}
+		<button ng-click="action()">clickParent</button>
+		<div ng-controller="childController">
+			{{value}}
+			<button ng-click="childAction()">clickChild</button>
+		</div>
+	</div>
+	
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.js"></script>
+	<script src="../../node_modules/angular/angular.js"></script>
+	<script src="../../node_modules/angular/angular.min.js"></script>
+	<script src="InnerDirective.js"></script>
+	<script>
+	    angular.module('innerDirectiveDemo', [])
+	    .run(function($rootScope, $timeout) {
+
+	      $timeout(function() {
+	        $rootScope.myHref = 'http://google.com';
+	      }, 2000);
+
+	    })
+ 	</script>
+</body>
+</html>
